@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react';
-import TodoItem from './TodoItem';
+import TodoItem from '../../TodoItem';
 
 class TodoList extends Component {
   constructor(props){

@@ -1,4 +1,28 @@
-.red-btn {
-  background-color: red;
-  color: #fff;
+html,
+body,
+input{
+  margin: 0;
+  padding: 0;
+}
+
+ul,li,ol,dl {
+  list-style: none;
+}
+
+body {
+  background: #CDCDCD;
+}
+
+
+@media screen and (max-device-width: 620px) {
+  section{
+    width:96%;padding:0 2%;
+  }
+}
+@media screen and (min-width: 620px) {
+  section{width:600px;padding:0 10px;}
+}
+
+section {
+  margin: 0 auto;
 }

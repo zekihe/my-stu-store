@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react';
-import TodoItem from '../../TodoItem';
+// import TodoItem from '../todoItem.js/todoItem';
+import './addTodo.css';
 
 class TodoList extends Component {
   constructor(props){
@@ -20,29 +21,30 @@ class TodoList extends Component {
     return (
       //jsx语法
       <Fragment>
-        <div>
-          <input value={this.state.inputValue } onChange={this.handleInputChange}/>
-          <button className="red-btn" onClick={this.handleBtnClick}>add</button>
+        <div className={'input_cont'}>
+          <div class="add_input">
+            <input value={this.state.inputValue } onChange={this.handleInputChange}/>
+          </div>
+          <div className={'add-btn btn'} onClick={this.handleBtnClick}>Add</div>
         </div>
-        <ul>{this.getTodoItems()}</ul> 
+        {/* <ul>{this.getTodoItems()}</ul>  */}
       </Fragment>
     );
   }
   //列表拆分成函数获取
-  getTodoItems(){
-    return (
-      this.state.list.map((item,idx) => {
-        return (
-            <TodoItem 
-              delete={this.handleDelete }
-              key={idx} 
-              index={idx} 
-              content={item}/>
-        );
-        // return <li key={idx} onClick={this.handleItemClick.bind(this,idx)}>{item}</li>
-      })
-    )
-  }
+  // getTodoItems(){
+  //   return (
+  //     this.state.list.map((item,idx) => {
+  //       return (
+  //           <TodoItem 
+  //             delete={this.handleDelete }
+  //             key={idx} 
+  //             index={idx} 
+  //             content={item}/>
+  //       );
+  //     })
+  //   )
+  // }
   handleBtnClick(){
     if(!this.state.inputValue)return;
     this.setState({

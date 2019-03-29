@@ -7,9 +7,7 @@ class Index extends Component {
     return (
       <Fragment>
         <section>
-          <ul>
-            <TodoItem />
-          </ul>
+          <TodoItem />
         </section>
       </Fragment>
     )

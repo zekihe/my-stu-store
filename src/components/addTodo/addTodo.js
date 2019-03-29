@@ -1,4 +1,6 @@
 import React, { Component,Fragment } from 'react';
+import { connect } from 'react-redux';
+import { addTodoList }  from '../../actions/list-action.js';
 // import TodoItem from '../todoItem.js/todoItem';
 import './addTodo.css';
 
@@ -6,12 +8,11 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      list: [
-        'learn react',
-        'learn english'
-      ],
+      list: this.props.data.list,
       inputValue: ''
     }
+    this.addTodo = this.props.addTodo;
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -22,7 +23,7 @@ class TodoList extends Component {
       //jsx语法
       <Fragment>
         <div className={'input_cont'}>
-          <div class="add_input">
+          <div className="add_input">
             <input value={this.state.inputValue } onChange={this.handleInputChange}/>
           </div>
           <div className={'add-btn btn'} onClick={this.handleBtnClick}>Add</div>
@@ -47,8 +48,10 @@ class TodoList extends Component {
   // }
   handleBtnClick(){
     if(!this.state.inputValue)return;
+    this.props.addTodo(this.state.inputValue)
+    console.log(this.props)
+    
     this.setState({
-      list: [...this.state.list, this.state.inputValue],
       inputValue: ''
     })
   }
@@ -77,4 +80,20 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+const mapStateToProps=(state)=>{
+	return{
+		data:state.todoList
+	}
+}
+const mapDispatchToProps=(dispatch)=>{
+	return{
+		addTodo:(data)=>{
+			dispatch(addTodoList(data))
+		}
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TodoList);

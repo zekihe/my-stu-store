@@ -1,0 +1,76 @@
+.z_calendar {
+  width: 960px;
+  margin: 20px auto 10px;
+  font-family: 'Microsoft Yahei';
+}
+.z_cla_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.z_cla_header .curTips {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.z_cla_header > div {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.z_cla_header .z_btn {
+  margin-left: 15px;
+  height: 30px;
+  line-height: 30px;
+  text-decoration: none;
+  text-align: center;
+  padding: 0 15px;
+  background: #55cbc4;
+  color: #fff;
+  cursor: pointer;
+  transition: all linear .2s;
+}
+
+.z_cla_header .z_btn:hover {
+  background-color: #6adbcf;
+  color: #fff;
+}
+.z_week_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.z_week_list > li{
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+.z_week_list > li:last-child {
+  border-right: none;
+}
+.z_cal_list {
+
+}
+.z_cal_list > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.z_cal_list .cal_day{
+  width: calc( 100% / 7 );
+  width: -webkit-calc( 100% / 7 );
+  width: -moz-calc(100% / 7 );
+  padding: 10px;
+  height: 100px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.z_cal_list .cal_day:last-child {
+  border-right: none;
+}
+.z_cal_list .cal_null {
+  background: #f3f3f3;
+}

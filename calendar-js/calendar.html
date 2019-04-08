@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/zCalendar.css">
+  <style>
+    html,body,ul,ol,li {
+      margin: 0;
+      padding: 0;
+    }
+    ul,ol,li {
+      list-style: none;
+    }
+
+    ul,ol {
+      overflow: hidden;
+    }
+
+    
+  </style>
+  <title>Calendar</title>
+</head>
+<body>
+   <div id="calendar"></div>
+   <script src="js/zCalendar.js"></script>
+   <script>
+     var cal = new Zcalendar({
+        tmpId: 'calendar',
+     })
+   </script>
+</body>
+<!-- <script>
+  var calendar = (function(){
+    "use strict"
+
+    let weekName = ['周日','周一','周二','周三','周四','周五','周六'];
+    let oDiv = document.getElementById('calendar'),
+        ol = document.createElement('ol'),
+        ul = document.createElement('ul');
+    let preBtn  = null,
+        nextBtn = null;
+
+    var config = { 
+      currentDate: new Date(),
+      currentYear: 0,
+      currentMonth: 0,  // 0 - 11
+      curWeek: 0, //当前星期几
+      curMonthDays: 0 //当前月天数 
+    };
+    // Object.defineProperty(config, 'currentMonth', {
+    //   get: function() {
+    //     console.log('get：' + currentMonth);
+    //     return currentMonth;
+    //   },
+    //   set: function(value) {
+    //     currentMonth = value;
+    //     console.log('set:' + currentMonth);
+    //   }
+    // });
+
+    config.currentYear = config.currentDate.getFullYear();
+    config.currentMonth = config.currentDate.getMonth() + 1;
+    
+    // let currentDate  = new Date(),
+    //     currentYear  = currentDate.getFullYear(),
+    //     currentMonth = currentDate.getMonth() + 1,  // 0 - 11
+    //     curWeek = null, //当前星期几
+    //     curMonthDays = null; //当前月天数
+
+
+
+    //初始化周
+    var initRender = function(){
+      let oLi = null,
+          uLi = null,
+          oSpan = null;
+      oDiv.innerHTML = '<input name="prev" type="button" value="上个月"/>'
+                   + '<span class="curTips">' + config.currentYear + '年' + config.currentMonth + '月' + '</span>'
+                   + '<input name="next" type="button" value="下个月"/>';
+
+      oDiv.appendChild(ol);
+      oDiv.appendChild(ul);
+
+      preBtn = document.getElementsByTagName('input')[0];
+      nextBtn = document.getElementsByTagName('input')[1];
+
+      for(let i = 0, len = weekName.length; i < len; i++){
+        oLi = document.createElement('li');
+        oLi.innerHTML = weekName[i];
+        ol.appendChild(oLi);
+      }
+      initMonth();
+      initEvents();
+    }
+
+    //初始化列表
+    var initMonth = function(){
+      let oUl = document.getElementsByTagName('ul')[0];
+      config.curMonthDays = getDaysInOneMonth(config.currentYear,config.currentMonth); //当前月天数
+       //当前星期几0-6 ， 当前展示前面有几个空的Li
+      config.curWeek = getDayInMonth(config.currentYear,config.currentMonth);
+      
+      let tempHtml = '';
+      //当月第一天从星期几开始，前面加几个空的li
+      if(config.curWeek){
+        let nullLi = null;
+        for(let j = 0; j < config.curWeek; j++){
+          tempHtml += '<li class="cal_day">'
+                  +    '<span>-</span>'
+                  +  '</li>';
+        }
+      }
+      //[0,1,2,3,4,5,6]
+      for(let i = 1; i < config.curMonthDays ; i++){
+        tempHtml += '<li key="'+ i +'" class="cal_day ' + 'day_' + i +' ">'
+                 +    '<span>' + i + '</span>'
+                 +  '</li>';
+      }
+      oUl.innerHTML = tempHtml;
+    }
+    
+    var initEvents = function(){
+      preBtn.addEventListener('click',function(){
+        let oSpan = document.getElementsByClassName('curTips')[0];
+        preMonth()
+        oSpan.innerHTML = '<span class="curTips">' + config.currentYear + '年' + config.currentMonth + '月' + '</span>';
+      })
+
+      nextBtn.addEventListener('click',function(){
+        let oSpan = document.getElementsByClassName('curTips')[0];
+        nextMonth()
+        oSpan.innerHTML = '<span class="curTips">' + config.currentYear + '年' + config.currentMonth + '月' + '</span>';
+      })
+
+    }
+
+    //判断是否为闰年，闰年的话，二月份+1天，这里用不到
+    var is_leap = function(year){
+      return (year%100 ==0 ? res = (year%400 == 0 ? 1 : 0) : res = (year%4 == 0 ? 1 : 0));
+    }
+
+    //上一个月
+    var preMonth = function(){
+      config.currentMonth = parseInt(config.currentMonth);
+      config.currentYear = parseInt(config.currentYear);
+      if(config.currentMonth == 1){
+        config.currentMonth = 12;
+        config.currentYear--;
+      }else{
+        config.currentMonth--
+      }
+      initMonth()
+    }
+    //下一个月
+    var nextMonth = function(){
+      config.currentMonth = parseInt(config.currentMonth);
+      config.currentYear = parseInt(config.currentYear);
+      if(config.currentMonth == 12){
+        config.currentMonth = 1;
+        config.currentYear++;
+      }else{
+        config.currentMonth++;
+      }
+      initMonth()
+    }
+    //获取某年某月有多少天
+    var getDaysInOneMonth = function(year, month){
+      month = parseInt(month,10) - 1;
+      let d = new Date(year,month,0);  //这个是都可以兼容的
+      // let date = new Date(year+"/"+month+"/0")   //IE浏览器可以获取天数，谷歌浏览器会返回NaN
+      return d.getDate();
+    }
+
+    //获取当前某年某月第一天是星期几
+    var getDayInMonth = function(year, month){
+      month = parseInt(month,10) -1;
+      let d = new Date(year,month,1);  //这个是都可以兼容的
+      return d.getDay();
+    }
+
+    return {
+      init : function(){
+        initRender();
+      }
+    }
+  })(window)
+
+  calendar.init();
+  
+  
+</script> -->
+</html>

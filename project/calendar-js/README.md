@@ -5,4 +5,4 @@ var cal = new Zcalendar({
 })
 
 
-![运行截图](./calendar.html)
+![运行截图](./imgs/calendar.png)

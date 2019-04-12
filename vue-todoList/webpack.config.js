@@ -12,13 +12,12 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
   target: "web",
-  entry: './src/index.js',
   entry: path.join(__dirname,'src/index.js'),
   output: {
     filename: 'bindle.[hash:8].js',
     path: path.join(__dirname, 'dist')
   },
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'production',
   module: {
     rules: [
       {
@@ -117,7 +116,7 @@ if(isDev){
   }
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    // new webpack.NoEmitOnErrorsPlugin()
   )
 }else {
   config.entry = {

@@ -1,0 +1,5 @@
+{
+  "presets": ["@babel/preset-env","@babel/preset-react"],
+  "plugins": ["@babel/plugin-transform-runtime"],
+}
+// babelrc展示如何使用render方法以及vue也可以支持jsx代码

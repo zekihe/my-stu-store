@@ -20,7 +20,8 @@ const defaultPlugins = [
     }
   }),
   new HTMLWebpackPlugin({
-    title: 'VuetodoList'
+    title: 'VuetodoList',
+    template: 'src/index.html'
   })
 ]
 

@@ -49,7 +49,7 @@ if(isDev){
         {
           test: /\.styl(us)?$/,
           use: [
-            'style-loader',
+            'vue-style-loader',
             'css-loader',
             {
               loader: 'postcss-loader', // 能够编译生成sourceMap
@@ -57,7 +57,7 @@ if(isDev){
                 sourceMap: true, // 若stylus-loader已生成source-map，则postcss-loader就不再重新生成
                 config: {
                   path: 'postcss.config.js'
-                }
+                },
               }
             },
             'stylus-loader'
@@ -88,7 +88,7 @@ if(isDev){
         {
           test: /\.styl(us)?$/,
           use: ExtractPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: [
               'css-loader',
               {

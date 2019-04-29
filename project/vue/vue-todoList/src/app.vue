@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div id="cover"></div>
-    <Header></Header>
+    <commonHeader></commonHeader>
     <Todo></Todo>
-    <Footer></Footer>
+    <commonFooter></commonFooter>
   </div>
 </template>
 
 <script>
-import Header from './todo/header.vue'
-import Footer from './todo/footer.jsx'
+import commonHeader from './todo/header.vue'
+import commonFooter from './todo/footer.jsx'
 import Todo from './todo/todo.vue'
 
 
@@ -20,9 +20,9 @@ export default {
     }
   },
   components: {
-    Header,
+    commonHeader,
     Todo,
-    Footer,
+    commonFooter,
   }
 }
 </script>

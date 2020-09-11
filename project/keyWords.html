@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>关键字查询</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body {
+                font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+                font-size: 14px;
+            }
+            html,body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                margin: 15px auto 0;
+                width: 80%;
+            }
+            #header {
+                /* background-color: #24292e; */
+                background-color: #42b983;
+                /* height: 40px; */
+                /* padding: 10px 60px; */
+                position: relative;
+                z-index: 20;
+                box-shadow: 0 0 1px rgba(0,0,0,0.25);
+                transition: background-color 0.3s ease-in-out;
+            }
+            .header-content {
+                margin: 0 auto;
+                width: 80%;
+            }
+            .header-title {
+                font-weight: 600;
+                color: #fff;
+                font-size: 16px;
+                margin-left: 16px!important;
+                padding-top: 16px!important;
+                padding-bottom: 16px!important;
+            }
+            .c-textarea {
+                width:100%; 
+                min-height:500px;
+                background-color: #fafbfc;
+                padding: 5px 12px;
+                line-height: 20px;
+                color: #24292e;
+                vertical-align: middle;
+                background-color: #fff;
+                background-repeat: no-repeat;
+                background-position: right 8px center;
+                border: 1px solid #e1e4e8;
+                border-radius: 6px;
+                outline: none;
+                box-shadow: inset 0 1px 0 rgba(225,228,232,.2);
+                transition: border-color 0.2s ease;
+            }
+            .handle-content {
+                margin-top: 10px;
+            }
+            .c-keyText-input {
+                height: 30px;
+                line-height: 30px;
+                box-sizing: border-box;
+                padding: 0 15px 0 30px;
+                border: 1px solid #e3e3e3;
+                color: #273849;
+                outline: none;
+                border-radius: 15px;
+                margin-right: 10px;
+                vertical-align: middle !important;
+                transition: border-color 0.2s ease;
+            }
+            .c-textarea:focus,
+            .c-keyText-input:focus {
+                border-color: #42b983;
+            }
+            .delkey-btn {
+                border: none;
+                background: #4fc08d;
+                /* line-height: 30px; */
+                padding: 5px 15px;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+            .key-li {
+                font-weight: bold;
+                color: #333
+            }
+            .num-li {
+                color: #c33;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app">
+            <div id="header">
+                <div class="header-content">
+                    <div class="header-title">
+                        关键字查询（需要网络）
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <textarea class="c-textarea" v-model="content" placeholder="请输入文章"></textarea>
+                <div class="handle-content">
+                    <input class="c-keyText-input" v-model="keyText" placeholder="请输入关键字"></input>
+                    <span>当前关键字（词）共出现{{num}}次&nbsp;&nbsp;</span>
+                    <button class="delkey-btn" @click="delKeyText">删除当前关键字</button>
+                </div>
+                <ul>
+                    <li v-for="(item, index) in keyArr" :key="index">
+                        <span class="key-li">“{{item.key}}”&nbsp;</span>出现<i class="num-li">&nbsp;{{item.num}}&nbsp;</i>次
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!',
+                    content: '',
+                    keyText: '',
+                    num: 0,
+                    keyArr: [],
+                },
+                created() {
+                    
+                },
+                methods: {
+                    delKeyText () {
+                        if (!this.content) {
+                            alert('请输入文章');
+                            return;
+                        }
+                        if (!this.keyText) {
+                            alert('请输入关键字');
+                            return;
+                        }
+                        if(!this.num) {
+                            this.keyText = '';
+                            this.num = 0;
+                            return;
+                        }; 
+                        this.keyArr.push({
+                            key: this.keyText,
+                            num: this.num
+                        })
+                        let reg = "/" + this.keyText + "/g";
+                        reg = eval(reg);
+                        this.content = this.content.replace(reg, "");
+                        // 清空数据
+                        this.keyText = '';
+                        this.num = 0;
+                        window.localStorage.setItem('keyData', JSON.stringify(this.keyArr));
+                    },
+                    handleData (str, substr, isIgnore) {
+                        let count;
+                        let reg = "";
+                        if (isIgnore) {
+                            reg = "/" + substr + "/gi";
+                        } else {
+                            reg = "/" + substr + "/g";
+                        }
+                        reg = eval(reg);
+                        if (str.match(reg) == null) {
+                            count = 0;
+                        } else {
+                            count = str.match(reg).length;
+                        }
+                        this.num = count;
+                    }
+                },
+                watch: {
+                    keyText(val) {
+                        if(!this.content) return;
+                        if(!val) return;
+                        this.handleData(this.content, val, true);
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>

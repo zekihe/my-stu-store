@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>个税</title>
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+  <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+  <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>" defer="true"></script>
+    <% } %> -->
+</body>
+
+</html>

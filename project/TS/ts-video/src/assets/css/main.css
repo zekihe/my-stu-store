@@ -1,0 +1,135 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+  color: #333;
+  background-color: #fff;
+  min-width: 1226px;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('../iconfont/iconfont.eot?t=1600577359533'); /* IE9 */
+  src: url('../iconfont/iconfont.eot?t=1600577359533#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAVMAAsAAAAACrQAAAT/AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDTgqHeIY2ATYCJAMcCxAABCAFhG0HeRsXCREVpFuRfXVgu02jUMJu3OEiLLT5iELjeItwEQ7mfQTUfr89efIxa2qRjE8nMVS6JkLxBo3GkAlVS9TuIZG+QW3abIhAqCi0PRWL1ERI6+TOgeqJiL0sZi7NMI0AAXIVhlaeL/zK6prbyHJKAMRfxcsfHEv9SAugvG/6B3q1rKTvDXCUQKNpp1WLbgS4Yewm4jBuJ6DFEDqDbIydbAAtA/sFhN2YqBDQMbtcQg5qU5lzaka4gkYdq1SXYFy6fx/+0BIaoiIB3Gkzckw4hr/RvR1FCTYB/lQVyvvzQjqLhAVAJhzl+g9B+doFV9+Sd3O1DUCLWhQ/dW+4N15vR9lsIcZDvSJ9C/wXrwNZkBRKkVAC6Ns47Hah5FOHBWQ+OQGBTw8BiU9PAQWfXgJKvkbZRRZd7d2BTsISEI4Z7GI+KoQb9hqxy6lp0yaNiUNrnnMnjfkwSXLTKwrRWOpZ1lrrHiOsilM4TXX1eqSZDYLsd1XzZoui15uq7gxZZo0GSVhv5YMNOd2iBIMks7yxCpEo9eZqywbRLSWUFnRhSxHXCe5GVt5S2pWPyzVXbLYonEGU3DNegDcZZetGC2fKuxMauuGQh3bx/nZpGy1pUdUWjlNEt/BIwuUmCe4R4VzuspWPitDyRVfJUla5GfTiOngL61nWKK9eW7+eQ+qMyqqaWnfr8RbLjukl/0qreetd8507ZmXVulp3+bbx1i23Vf3rqjNiXN6s+hnbps+cqNdzxvTVVe3lZ82Q987GHNm1mHzIpqF2tm2px2z2dt/sU/EPsxML7R23pW6z2bHf7FLt0Ob6zc+oYg4yDsx+Gi/MBoa9iHhQ5+h5gSnDD9k8uMper39CZQWEI4IRpjcyyy5hd09fsfzHbI5wlUG9LtP7aUdmIyP+XJnqyv6xnLng6WgP3mU20j13DiuDsYVwF/s7+r5uP1P1OWlc/FzBg6/8Af2ub5vcvdle/8fPXzjMVf3Zcun0osEYmjF+wqWWl8gjrJ0AJIH1EYlK0lIZ0YrysOXF6MWWDwl3BOip1LP8ysbVjqMdMUy+Ye3ljeU92i9jq/TLLVtPr78gntF8H7i0U3NGvLjvDj1luiZEEzBzWlTM2d2M37nkGVGadPgMU6KS2fY9vJbFlGkX6hYmlC1Hnx5rnjzr+LXTlydPvnR+2vGZIwm9T7d9YfuXfen0NT5/UY/M8RAOGgciYXfdkNmz/3J9BbsMhQAfGv9VD2Gam6gz1CCgmZuqqSqg+SzJFAukG9VrGNKt6v1/u5udj+06BTkO/k2z3/KyjzmY5saauRnt5T+fQW3FX6qoOZdNFXBUWR+N9xBQOYLmPW5Cixb8n+EePOnP2F+7maDWH0JUGYSkNoHM2AUotFqEUm0ZWsxj3NmtepEKSsgMmEMZA0EXtkLU4RmSLlxGZuxjKAzgM5S6CAUttojrJVtNEc5yuAg6xUj9l5YheEYuPXitT0zZdhJVudR/SFpS1JR1svSAh/RxRHpNrSoTS3B0Z+4GawNFCSsGLWfVeK4qznujcgjOHHARdIqR+i8tQ/BMl9ZD6vefmLLtpGSoIfoPScvGqSnrGsiH3tcaOpet02tqVZnfiyU4urNeWJgPFPN3WjFoObfIxnPFLcZ19eX4Rned1wHoAe6nIypCETXREC3RERrHzGVEKGKXEw5hkrO1QjLa7ltKGmzAnEqvYLOrWuOywhgA') format('woff2'),
+  url('../iconfont/iconfont.woff?t=1600577359533') format('woff'),
+  url('../iconfont/iconfont.ttf?t=1600577359533') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../iconfont/iconfont.svg?t=1600577359533#iconfont') format('svg'); /* iOS 4.1- */
+}
+  
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-video-pause:before {
+  content: "\e616";
+}
+
+.icon-video-full:before {
+  content: "\e743";
+}
+
+.icon-video-play:before {
+  content: "\e618";
+}
+
+.icon-video-close:before {
+  content: "\e607";
+}
+
+.icon-video-volume:before {
+  content: "\e619";
+}
+
+.icon-video-mute:before {
+  content: "\e61a";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+  
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
+
+body {
+  height: 2000px;
+  background-color: #f5f5f5;
+}
+a, a:hover {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#list {
+ width: 1226px;
+ margin: 20px auto;
+}
+#list .list-wrap {
+  width: 1240px;
+}
+#list .list-wrap li {
+  float: left;
+  width: 296px;
+  height: 285px;
+  margin-right: 14px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .2s linear;
+}
+#list .list-wrap li:hover i{
+  background-color: #ff6700;
+  border-color: #ff6700;
+}
+#list .list-wrap li:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, -2px, 0);
+  -webkit-transform: translate3d(0, -2px, 0);
+}
+#list .list-wrap div {
+  position: relative;
+  margin: 0 0 28px;
+}
+#list .list-wrap img {
+  width: 100%;
+  height: 100%;
+}
+#list .list-wrap i {
+  position: absolute;
+  bottom: 10px;
+  left: 19px;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  width: 32px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  transition: all linear .2s;
+}
+#list .list-wrap h3 {
+  margin: 0 14px 6px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

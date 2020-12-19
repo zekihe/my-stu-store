@@ -36,7 +36,7 @@ class Popup implements Icomponent {
             pos: 'center',
             mask: true,
             content: function(){}
-        }, this.settings)
+        }, this.settings);
         this.init();
     }
     // 初始化
@@ -79,7 +79,6 @@ class Popup implements Icomponent {
     handle() {
         let popupClose = this.tempContainer.querySelector(`.${styles['popup-title']} i`);
         popupClose.addEventListener('click', () => {
-            console.log('123')
             document.body.removeChild(this.tempContainer);
             this.settings.mask && document.body.removeChild(this.mask);
         })

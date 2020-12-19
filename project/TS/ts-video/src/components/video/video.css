@@ -1,40 +1,128 @@
 .video {
-
+    position: relative;
+    overflow: hidden;
 }
 .video-content {
-
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .video-controls {
-
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    /* -webkit-transform: translate3d(0,30%,0);
+    transform: translate3d(0,30%,0); */
+    z-index: 3;
+    background: rgba(0,0,0,.6);
+    /* opacity: 0; */
 }
 .video-progress {
-
+    position: relative;
+    height: 4px;
+    background-color: #222223;
 }
 .video-progress__now {
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ff6a02;
 }
 .video-progress__suc {
-
+    width: 70%;
+    height: 100%;
+    background-color: #666;
 }
 .video-progress__bar {
-
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 8;
+    /* margin-top: -5.5px; */
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
 }
 
 .video-play {
-
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+.video-play i {
+    color: #fff;
+    font-size: 16px;
+    transition: all .3s;
 }
 .video-time {
-    
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 30px;
+    color: #fff;
 }
 .video-full {
-    
+    float: right;
+    height: 45px;
+    line-height: 45px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.video-full i {
+    color: #fff;
+    font-size: 14px;
+    transition: all .3s;
 }
 .video-volume {
-
+    float: right;
+    display: flex;
+    align-items: center;
+    height: 45px;
 }
 .video-volume i {
-
+    font-size: 20px;
+    color: #fff;
+    margin-right: 10px;
+    transition: all .3s;
 }
 .video-volprogress {
-    
+    position: relative;
+    width: 100px;
+    height: 4px;
+    background-color: #222223;
+}
+.video-volprogress__now {
+    width: 50%;
+    height: 100%;
+    background-color: #ff6a02;
+}
+.video-volprogress__bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 8;
+    margin-top: -3px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.video-volume i:hover,
+.video-play i:hover,
+.video-full i:hover {
+    color: #ff6a02;
 }

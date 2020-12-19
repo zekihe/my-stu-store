@@ -60,8 +60,7 @@ class Video implements Icomponent {
                     <i class="iconfont icon-video-volume"></i>
                     <div class="${styles['video-volprogress']}">
                         <div class="${styles['video-volprogress__now']}"></div>
-                        <div class="${styles['video-volprogress__suc']}"></div>
-                        <div class="${styles['video-pvolprogress__bar']}"></div>
+                        <div class="${styles['video-volprogress__bar']}"></div>
                     </div>
                 </div>
             </div>

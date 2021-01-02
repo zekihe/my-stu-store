@@ -7,6 +7,21 @@
     height: 100%;
     object-fit: cover;
 }
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -45px;
+    cursor: pointer;
+    z-index: 2;
+    background: url('../../assets/images/play_btn.png') no-repeat;
+}
+.video-loading {
+    
+}
 .video-controls {
     position: absolute;
     bottom: 0;
@@ -30,12 +45,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 0;
     height: 100%;
     background-color: #ff6a02;
 }
 .video-progress__suc {
-    width: 70%;
+    width: 0;
     height: 100%;
     background-color: #666;
 }
@@ -49,6 +64,7 @@
     height: 12px;
     background-color: #fff;
     border-radius: 50%;
+    cursor: pointer;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
 }
@@ -76,7 +92,7 @@
     float: right;
     height: 45px;
     line-height: 45px;
-    margin-right: 20px;
+    margin: 0 20px;
     cursor: pointer;
     font-weight: bold;
 }
@@ -95,6 +111,7 @@
     font-size: 20px;
     color: #fff;
     margin-right: 10px;
+    cursor: pointer;
     transition: all .3s;
 }
 .video-volprogress {
@@ -110,7 +127,7 @@
 }
 .video-volprogress__bar {
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
     z-index: 8;
     margin-top: -3px;

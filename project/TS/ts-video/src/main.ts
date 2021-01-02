@@ -22,6 +22,4 @@ for(let i = 0; i < listItem.length; i++) {
             }
         })
     })
-
-    
 }

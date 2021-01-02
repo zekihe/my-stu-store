@@ -1,7 +1,8 @@
 import * as minify from "../../../node_modules/_@types_html-minifier-terser@5.1.0@@types/html-minifier-terser/index";
 
 // webcpack方式
-let styles = require('./video.css');
+// let styles = require('./video.css');
+import styles from './video.css';
 // let loadingImg = require('../../assets/images/loading.gif');
 import loadingImg from "../../assets/images/loading.gif";
 

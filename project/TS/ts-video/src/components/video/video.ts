@@ -2,6 +2,8 @@ import * as minify from "../../../node_modules/_@types_html-minifier-terser@5.1.
 
 // webcpack方式
 let styles = require('./video.css');
+// let loadingImg = require('../../assets/images/loading.gif');
+import loadingImg from "../../assets/images/loading.gif";
 
 interface Ivideo {
     url?: string,
@@ -45,6 +47,9 @@ class Video implements Icomponent {
         this.tempContainer.innerHTML = `
             <video class="${styles['video-content']}" src="${this.settings.url}"></video>
             <div class="${styles['video-play-btn']}"></div>
+            <div class="${styles['video-loading']}" style="display:none">
+                <img src="${loadingImg}" alt="正在加载"></img>
+            </div>
             <div class="${styles['video-controls']}">
                 <div class="${styles['video-progress']}">
                     <div class="${styles['video-progress__now']}"></div>
@@ -69,6 +74,7 @@ class Video implements Icomponent {
                 </div>
             </div>
         `;
+
         if(typeof this.settings.elem === 'object') {
             this.settings.elem.appendChild(this.tempContainer);
         } else {
@@ -88,6 +94,7 @@ class Video implements Icomponent {
         let videoProgress = this.tempContainer.querySelectorAll(`.${styles['video-progress']} div`);
         let videoVolProgress = this.tempContainer.querySelectorAll(`.${styles['video-volprogress']} div`);
         let videoVolume = this.tempContainer.querySelector(`.${styles['video-volume']} i`);
+        let videoLoading = this.tempContainer.querySelector(`.${styles['video-loading']}`);
 
         let timer, state = {
             error: !1,
@@ -95,7 +102,7 @@ class Video implements Icomponent {
             playing: !1
         };
         videoContent.volume = 0.5;
-        videoContent.autoplay = true;
+        videoContent.autoplay = this.settings.autoplay;
         
         Object.defineProperty(state, 'loading', {
             get: function () {
@@ -104,7 +111,12 @@ class Video implements Icomponent {
             },
             set: function (newValue) {
                 this._loading = newValue;
-                console.log('set loading', newValue); //成功触发方法打印出设置的值
+                console.log('set loading', newValue); // 成功触发方法打印出设置的值
+                if(this._loading) {
+                    videoLoading.style.display = 'block';
+                } else {
+                    videoLoading.style.display = 'none';
+                }
             }
         });
 
@@ -115,8 +127,16 @@ class Video implements Icomponent {
             },
             set: function (newValue) {
                 this._playing = newValue;
-                console.log('set playing', newValue); //成功触发方法打印出设置的值
+                console.log('set playing', newValue); // 成功触发方法打印出设置的值
             }
+        });
+
+        let classArr = [];
+        this.tempContainer.addEventListener('mouseenter', (e) => {
+            videoControls.className = `${styles['video-controls']} ${styles['video-controls-active']}`;
+        });
+        this.tempContainer.addEventListener('mouseleave', (e) => {
+            videoControls.className = `${styles['video-controls']}`;
         });
 
         // 
